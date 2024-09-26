@@ -15,7 +15,7 @@ const Nav: React.FC<NavProps> = ({ activeIndex, handleNavClick }) => {
     ];
 
     return (
-        <div className='bg-[#ECECEC] flex flex-col justify-center items-center mt-[235px] mx-[390px] rounded-[10px]'>
+        <div className='bg-[#ECECEC] flex flex-col justify-center items-center mt-[235px] mx-[390px] rounded-[10px] w-[500px] shadow-md'>
             <div className='flex justify-center items-center gap-[5px] p-[5px] h-[50px] w-[500px]'>
                 {navItems.map((item, index) => (
                     <button

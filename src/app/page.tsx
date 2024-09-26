@@ -15,13 +15,13 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-[#F7F7F7] h-full w-full overflow-hidden">
+    <div className="bg-[#F7F7F7] h-full w-full overflow-hidden flex justify-center items-center flex-col">
       <Nav activeIndex={activeSection} handleNavClick={handleNavClick} />
       {activeSection === 0 && <Skills />}
       {activeSection === 1 && <Experience />}
       {activeSection === 2 && <Projects />}
       {activeSection === 3 && <Achievements />}
-      {/* <Description />  */}
+      {/* <Description /> */}
     </div>
   )
 }

@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import { Metadata } from 'next';
 
-
+// Correct usage of Poppins with font weight and style
 const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
+  weight: ['400', '700'], // Specify the font weights you need
+  subsets: ['latin'], // Subset should be passed here, not in style
+  style: ['normal', 'italic'], // Optional: If you need both normal and italic styles
 });
 
 export const metadata: Metadata = {
@@ -17,16 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }

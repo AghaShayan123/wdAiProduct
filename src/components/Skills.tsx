@@ -24,7 +24,7 @@ const Skills = () => {
         <div className="flex justify-center items-center mt-[20px] mb-[235px]">
             <form
                 onSubmit={formik.handleSubmit}
-                className="bg-white p-[50px] rounded-[10px] shadow-md w-[500px] h-[483px]"
+                className="bg-white p-[50px] rounded-[10px] shadow-md sm:w-[500px] w-[300px] h-[483px]"
             >
                 {/* Full Name */}
                 <div className="mb-[30px]">
@@ -41,7 +41,7 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.fullName}
                         placeholder="Enter your name"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                     />
                     {formik.errors.fullName && formik.touched.fullName ? (
                         <p className="text-red-500 text-xs">{formik.errors.fullName}</p>
@@ -63,7 +63,7 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.jobPosition}
                         placeholder="Enter your current job position"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                     />
                     <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">e.g. Full Stack Developer</p>
                 </div>
@@ -83,7 +83,7 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.skills}
                         placeholder="Enter your skills e.g. React Js, Next Js"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1]"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] shadow-md"
                     />
                     <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">Separate the skills with a comma</p>
                     {formik.errors.skills && formik.touched.skills ? (
@@ -95,7 +95,7 @@ const Skills = () => {
                 <div className="mt-[30px]">
                     <button
                         type="submit"
-                        className="w-full h-[40px] py-[10px] bg-[#2850C8] text-white rounded-[5px] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                        className="w-full h-[40px] py-[10px] bg-[#2850C8] text-white rounded-[5px] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-md"
                     >
                         <span className='font-[500] text-[14px] leading-[21px] text-center'> Next</span>
                     </button>

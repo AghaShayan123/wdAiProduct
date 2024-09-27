@@ -46,7 +46,7 @@ const TopProjects = () => {
             <div className="flex justify-center items-center mt-10 mb-20">
                 <form
                     onSubmit={formik.handleSubmit}
-                    className="bg-white p-8 rounded-lg shadow-md w-[500px]"
+                    className="bg-white p-8 rounded-lg shadow-md sm:w-[500px] w-[300px]"
                 >
                     <p className="block text-[16px] font-[500] mb-[8px] leading-[24px]">Top Projects</p>
 
@@ -65,7 +65,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur} // For touched state
                                                 value={project.projectTitle}
                                                 placeholder="Enter your project title"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                                             />
                                             {/* Error Handling */}
                                             {formik.touched.projects?.[index]?.projectTitle &&
@@ -87,7 +87,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur} // For touched state
                                                 value={project.projectLink}
                                                 placeholder="Enter live or demo link"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                                             />
                                             {/* Error Handling */}
                                             {formik.touched.projects?.[index]?.projectLink &&
@@ -108,7 +108,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur}
                                                 value={project.projectDescription}
                                                 placeholder="Short description (optional)"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] h-[110px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] h-[110px] shadow-md"
                                             />
                                         </div>
                                         <div className='w-[150px] h-[1px] bg-[#B1B1B1] mb-[30px] mt-[10px] mx-auto'></div>
@@ -121,7 +121,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur} // For touched state
                                                 value={project.projectTitle}
                                                 placeholder="Enter your project title"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                                             />
                                             {/* Error Handling */}
                                             {formik.touched.projects?.[index]?.projectTitle &&
@@ -141,7 +141,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur} // For touched state
                                                 value={project.projectLink}
                                                 placeholder="Enter live or demo link"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
                                             />
                                             {/* Error Handling */}
                                             {formik.touched.projects?.[index]?.projectLink &&
@@ -160,7 +160,7 @@ const TopProjects = () => {
                                                 onBlur={formik.handleBlur}
                                                 value={project.projectDescription}
                                                 placeholder="Short description (optional)"
-                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] h-[110px]"
+                                                className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] h-[110px] shadow-md"
                                             />
                                         </div>
                                         {/* Divider */}
@@ -171,20 +171,10 @@ const TopProjects = () => {
                                 ))}
 
                                 {/* Add More Button */}
-                                <div className="text-center">
-                                    <button
-                                        type="button"
-                                        onClick={() =>
-                                            push({
-                                                projectTitle: '',
-                                                projectLink: '',
-                                                projectDescription: '',
-                                            })
-                                        }
-                                        className="text-blue-600 font-semibold"
-                                    >
+                                <div className="flex justify-center mb-[30px]">
+                                    <div className='font-[500] text-[14px] leading-[21px] text-[#2850C8] cursor-pointer '>
                                         Add More
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -194,7 +184,7 @@ const TopProjects = () => {
                     <div className="mt-6">
                         <button
                             type="submit"
-                            className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                            className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-md"
                         >
                             Next
                         </button>

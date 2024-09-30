@@ -32,7 +32,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ onGenerate }) => {
             >
                 <p className="block text-[16px] font-[500] mb-[8px] leading-[24px]">Your Achievements</p>
 
-                {/* Textarea for Achievements */}
+
                 <div className="mb-[20px]">
                     <textarea
                         id="achievement"

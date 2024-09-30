@@ -26,7 +26,6 @@ const Skills = () => {
                 onSubmit={formik.handleSubmit}
                 className="bg-white p-[50px] rounded-[10px] shadow-md sm:w-[500px] w-[300px] h-[483px]"
             >
-                {/* Full Name */}
                 <div className="mb-[30px]">
                     <label
                         htmlFor="fullName"
@@ -41,14 +40,12 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.fullName}
                         placeholder="Enter your name"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md text-ellipsis"
                     />
                     {formik.errors.fullName && formik.touched.fullName ? (
                         <p className="text-red-500 text-xs">{formik.errors.fullName}</p>
                     ) : null}
                 </div>
-
-                {/* Job Position */}
                 <div className="mb-[30px]">
                     <label
                         htmlFor="jobPosition"
@@ -63,12 +60,10 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.jobPosition}
                         placeholder="Enter your current job position"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md text-ellipsis"
                     />
                     <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">e.g. Full Stack Developer</p>
                 </div>
-
-                {/* Skills */}
                 <div className="mb-[30px]">
                     <label
                         htmlFor="skills"
@@ -83,15 +78,13 @@ const Skills = () => {
                         onChange={formik.handleChange}
                         value={formik.values.skills}
                         placeholder="Enter your skills e.g. React Js, Next Js"
-                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] shadow-md"
+                        className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] shadow-md text-ellipsis"
                     />
                     <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">Separate the skills with a comma</p>
                     {formik.errors.skills && formik.touched.skills ? (
                         <p className="text-red-500 text-xs">{formik.errors.skills}</p>
                     ) : null}
                 </div>
-
-                {/* Next Button */}
                 <div className="mt-[30px]">
                     <button
                         type="submit"

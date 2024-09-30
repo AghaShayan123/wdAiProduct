@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Calender from "@/assets/Calendar.svg"
@@ -15,8 +15,6 @@ const validationSchema = yup.object({
 });
 
 const JobExperiences = () => {
-    const [joiningDate, setJoiningDate] = useState(null);
-    const [leavingDate, setLeavingDate] = useState(null);
     const formik = useFormik({
         initialValues: {
             companyName: '',

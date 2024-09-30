@@ -51,7 +51,7 @@ const TopProjects = () => {
                     <p className="block text-[16px] font-[500] mb-[8px] leading-[24px]">Top Projects</p>
 
                     <FieldArray name="projects">
-                        {({ remove, push }) => (
+                        {({ }) => (
                             <div>
                                 {formik.values.projects.map((project, index) => (
                                     <div key={index} className="mb-8">

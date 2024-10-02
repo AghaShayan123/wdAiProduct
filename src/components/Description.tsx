@@ -3,7 +3,7 @@ import React from 'react'
 
 const Description = () => {
     return (
-        <div className='bg-[#ffffff] flex flex-col justify-center items-center rounded-[10px] mx-[190px] my-[200px] shadow-custom w-[300px] md:w-[600px] lg:w-[900px]'>
+        <div className='bg-[#ffffff] flex flex-col justify-center items-center rounded-[10px] mx-[190px] mt-[20px] mb-[200px] shadow-custom w-[300px] md:w-[600px] lg:w-[900px]'>
             <div className='flex justify-center items-center pb-[8px] pt-[60px]'>
                 <p className='font-[500] text-[16px] leading-[24px]'>Your Linkedin Description</p>
             </div>

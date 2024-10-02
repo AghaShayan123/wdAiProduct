@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Button from './Button';
+import JobExperiences from '@/components/Experience';
+
+interface SkillsProps {
+    setActiveIndex: (index: number) => void;
+}
 
 const validationSchema = yup.object({
     fullName: yup.string().required('Full Name is required'),
@@ -8,7 +14,9 @@ const validationSchema = yup.object({
     skills: yup.string().required('Skills are required'),
 });
 
-const Skills = () => {
+const Skills: React.FC<SkillsProps> = ({ setActiveIndex }) => {
+    const [showExperience, setShowExperience] = useState(false);
+
     const formik = useFormik({
         initialValues: {
             fullName: '',
@@ -18,13 +26,20 @@ const Skills = () => {
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log('Form Values:', values);
+            setActiveIndex(1);
+            setShowExperience(true);
         },
     });
+
+    if (showExperience) {
+        return <JobExperiences setActiveIndex={setActiveIndex} />;
+    }
+
     return (
-        <div className="flex justify-center items-center mt-[20px] mb-[235px]">
+        <div className="flex justify-center items-center mt-[20px] mb-[233px]">
             <form
                 onSubmit={formik.handleSubmit}
-                className="bg-white p-[50px] rounded-[10px] shadow-md sm:w-[500px] w-[300px] h-[483px]"
+                className="bg-white py-[50px] px-[10px] md:px-[50px] rounded-[10px] shadow-md sm:w-[500px] w-[300px] h-[483px]"
             >
                 <div className="mb-[30px]">
                     <label
@@ -62,7 +77,7 @@ const Skills = () => {
                         placeholder="Enter your current job position"
                         className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md text-ellipsis"
                     />
-                    <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">e.g. Full Stack Developer</p>
+                    <p className="text-[#B1B1B1] text-[10px] font-[300] leading-[15px]">e.g. Full Stack Developer</p>
                 </div>
                 <div className="mb-[30px]">
                     <label
@@ -80,22 +95,15 @@ const Skills = () => {
                         placeholder="Enter your skills e.g. React Js, Next Js"
                         className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] shadow-md text-ellipsis"
                     />
-                    <p className="text-[#BCBCBC] text-[10px] font-[300] leading-[15px]">Separate the skills with a comma</p>
+                    <p className="text-[#B1B1B1] text-[10px] font-[300] leading-[15px]">Separate the skills with a comma</p>
                     {formik.errors.skills && formik.touched.skills ? (
                         <p className="text-red-500 text-xs">{formik.errors.skills}</p>
                     ) : null}
                 </div>
-                <div className="mt-[30px]">
-                    <button
-                        type="submit"
-                        className="w-full h-[40px] py-[10px] bg-[#2850C8] text-white rounded-[5px] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-md"
-                    >
-                        <span className='font-[500] text-[14px] leading-[21px] text-center'> Next</span>
-                    </button>
-                </div>
+                <Button text="Next" />
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Skills
+export default Skills;

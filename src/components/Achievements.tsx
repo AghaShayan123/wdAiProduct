@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Button from './Button';
 
 
 interface AchievementsPageProps {
@@ -18,9 +19,8 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ onGenerate }) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            // Handle LinkedIn description generation here
             console.log('Achievement:', values.achievement);
-            onGenerate(); // Call the function to navigate to the Description page
+            onGenerate();
         },
     });
 
@@ -28,7 +28,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ onGenerate }) => {
         <div className="flex justify-center items-center mt-[20px] mb-[235px]">
             <form
                 onSubmit={formik.handleSubmit}
-                className="bg-white p-[50px] rounded-[10px] shadow-md w-[300px] sm:w-[500px]"
+                className="bg-white py-[50px] px-[10px] md:px-[50px] rounded-[10px] shadow-md w-[300px] sm:w-[500px]"
             >
                 <p className="block text-[16px] font-[500] mb-[8px] leading-[24px]">Your Achievements</p>
 
@@ -46,16 +46,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ onGenerate }) => {
                         <p className="text-red-500 text-xs">{formik.errors.achievement}</p>
                     ) : null}
                 </div>
-
-                {/* Submit Button */}
-                <div className="text-center">
-                    <button
-                        type="submit"
-                        className="w-full h-[40px] py-[10px] bg-[#2850C8] text-white rounded-[5px] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-md"
-                    >
-                        <span className='sm:font-[500] font-[300] sm:text-[14px] text-[12px] leading-[21px] text-center'> Generate LinkedIn Description</span>
-                    </button>
-                </div>
+                <Button text='Generate Linkedin Description' />
             </form>
         </div>
     );

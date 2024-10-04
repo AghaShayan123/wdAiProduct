@@ -29,10 +29,6 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
         { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
     ]);
 
-    const handleAddMore = () => {
-        setExperiences([...experiences, { companyName: '', joiningDate: null, leavingDate: null, achievements: '' }]);
-    };
-
     const formik = useFormik({
         initialValues: {
             experiences,
@@ -49,6 +45,17 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
         return <TopProjects setActiveIndex={setActiveIndex} />;
     }
 
+    const handleAddMore = () => {
+        setExperiences([
+            ...experiences,
+            { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
+        ]);
+        formik.setFieldValue('experiences', [
+            ...formik.values.experiences,
+            { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
+        ]);
+    };
+
     const handleDateChange = (index: number, field: string, date: Date | null) => {
         formik.setFieldValue(`experiences.${index}.${field}`, date);
     };
@@ -60,7 +67,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
                 className="bg-white py-[50px] px-[10px] md:px-[50px] rounded-[10px] shadow-md sm:w-[500px] w-[300px]"
             >
                 <p className='block text-[16px] font-[500] mb-[8px] leading-[24px]'>Job Experiences</p>
-                {experiences.map((experience, index) => (
+                {formik.values.experiences.map((experience, index) => (
                     <div key={index}>
                         <div className="mb-[20px] relative">
                             <input
@@ -68,7 +75,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
                                 name={`experiences.${index}.companyName`}
                                 type="text"
                                 onChange={formik.handleChange}
-                                value={formik.values.experiences[index]?.companyName || ''}
+                                value={formik.values.experiences[index].companyName}
                                 placeholder="Enter your company name"
                                 className="w-full px-4 py-[10px] text-[14px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] shadow-md h-[40px]"
                             />
@@ -87,7 +94,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
 
                         <div className="mb-[20px] relative">
                             <DatePicker
-                                selected={formik.values.experiences[index].joiningDate || null}
+                                selected={formik.values.experiences[index].joiningDate}
                                 onChange={(date) => handleDateChange(index, 'joiningDate', date)}
                                 dateFormat="MMMM yyyy"
                                 placeholderText="Select your joining date"
@@ -118,7 +125,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
 
                         <div className="mb-[20px] relative">
                             <DatePicker
-                                selected={formik.values.experiences[index].leavingDate || null}
+                                selected={formik.values.experiences[index].leavingDate}
                                 onChange={(date) => handleDateChange(index, 'leavingDate', date)}
                                 dateFormat="MMMM yyyy"
                                 placeholderText="Select your leaving date"
@@ -152,7 +159,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
                                 id={`experiences.${index}.achievements`}
                                 name={`experiences.${index}.achievements`}
                                 onChange={formik.handleChange}
-                                value={formik.values.experiences[index].achievements || ''}
+                                value={formik.values.experiences[index].achievements}
                                 placeholder="What's your achievements in that company (optional)"
                                 className="w-full px-4 py-[10px] sm:text-[14px] text-[12px] border border-[#B1B1B1] rounded-[5px] focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#B1B1B1] leading-[21px] h-[110px] shadow-md"
                             />

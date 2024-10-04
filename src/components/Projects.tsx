@@ -73,12 +73,12 @@ const TopProjects: React.FC<ProjectProps> = ({ setActiveIndex }) => {
                             />
                             {formik.errors.projects &&
                                 formik.errors.projects[index] &&
-                                (formik.errors.projects[index] as any)?.projectTitle && // Type assertion added here
+                                (formik.errors.projects[index] as any)?.projectTitle &&
                                 formik.touched.projects &&
                                 formik.touched.projects[index] &&
                                 formik.touched.projects[index]?.projectTitle && (
                                     <p className="text-red-500 text-xs">
-                                        {(formik.errors.projects[index] as any)?.projectTitle} {/* Type assertion here */}
+                                        {(formik.errors.projects[index] as any)?.projectTitle}
                                     </p>
                                 )}
                         </div>

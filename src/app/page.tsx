@@ -10,17 +10,13 @@ import JobExperiences from '@/components/Experience';
 const App: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleNavClick = (index: number) => {
-    setActiveIndex(index);
-  };
-
   const handleGenerateDescription = () => {
     setActiveIndex(4);
   };
 
   return (
     <div className='bg-[#F7F7F7] h-full w-full overflow-hidden flex justify-center items-center flex-col'>
-      <Nav activeIndex={activeIndex} handleNavClick={handleNavClick} />
+      <Nav activeIndex={activeIndex} />
       {activeIndex === 0 && <Skills setActiveIndex={setActiveIndex} />}
       {activeIndex === 1 && <JobExperiences setActiveIndex={setActiveIndex} />}
       {activeIndex === 2 && <TopProjects setActiveIndex={setActiveIndex} />}

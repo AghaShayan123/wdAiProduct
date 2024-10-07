@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
@@ -7,6 +8,7 @@ import Image from 'next/image';
 import Calender from '../assets/Calendar.svg';
 import Button from './Button';
 import TopProjects from '@/components/Projects';
+import { FormContext } from '@/app/context/formContext';
 
 interface ExperienceProps {
     setActiveIndex: (index: number) => void;
@@ -25,17 +27,24 @@ const validationSchema = yup.object({
 
 const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
     const [showProject, setShowProject] = useState(false);
-    const [experiences, setExperiences] = useState([
-        { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
-    ]);
+    const formContext = useContext(FormContext);
+
+    if (!formContext) {
+        throw new Error('FormContext must be used within a FormProvider');
+    }
+
+    const { formData, setFormData } = formContext;
 
     const formik = useFormik({
         initialValues: {
-            experiences,
+            experiences: formData.experiences || [
+                { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
+            ],
         },
         validationSchema,
         onSubmit: (values) => {
             console.log('Form Values:', values);
+            setFormData({ ...formData, experiences: values.experiences });
             setActiveIndex(2);
             setShowProject(true);
         },
@@ -46,10 +55,6 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
     }
 
     const handleAddMore = () => {
-        setExperiences([
-            ...experiences,
-            { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
-        ]);
         formik.setFieldValue('experiences', [
             ...formik.values.experiences,
             { companyName: '', joiningDate: null, leavingDate: null, achievements: '' },
@@ -107,7 +112,7 @@ const JobExperiences: React.FC<ExperienceProps> = ({ setActiveIndex }) => {
                                 alt="Calendar Icon"
                                 width={20}
                                 height={20}
-                                className="absolute right-4 top-[15%]  pointer-events-none"
+                                className="absolute right-4 top-[15%] pointer-events-none"
                             />
 
                             <p className="text-[#B1B1B1] text-[10px] font-[300] leading-[15px]">e.g. April 2020</p>

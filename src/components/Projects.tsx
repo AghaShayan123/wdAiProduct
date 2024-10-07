@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from './Button';
 import AchievementsPage from '@/components/Achievements';
+import { FormContext } from '@/app/context/formContext';
 
 interface ProjectProps {
-    setActiveIndex: (index: number) => void; // Expecting setActiveIndex function prop
+    setActiveIndex: (index: number) => void;
 }
 
 const validationSchema = yup.object({
@@ -20,17 +21,26 @@ const validationSchema = yup.object({
 
 const TopProjects: React.FC<ProjectProps> = ({ setActiveIndex }) => {
     const [showAchievements, setShowAchievements] = useState(false);
+    const formContext = useContext(FormContext);
+
+    if (!formContext) {
+        throw new Error('FormContext must be used within a FormProvider');
+    }
+
+    const { formData, setFormData } = formContext;
+
     const [projects, setProjects] = useState([
         { projectTitle: '', projectLink: '', projectDescription: '' },
     ]);
 
     const formik = useFormik({
         initialValues: {
-            projects: projects,
+            projects: formData.projects,
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log('Form Values:', values);
+            setFormData({ ...formData, projects: values.projects });
             setActiveIndex(3);
             setShowAchievements(true);
         },

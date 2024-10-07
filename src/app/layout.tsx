@@ -1,6 +1,8 @@
+
 import { Poppins } from "next/font/google";
 import './globals.css';
 import { Metadata } from 'next';
+import { FormProvider } from '@/app/context/formContext'; // Import your FormContext
 
 // Correct usage of Poppins with font weight and style
 const poppins = Poppins({
@@ -21,7 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {/* Wrap the children with FormProvider */}
+        <FormProvider>
+          {children}
+        </FormProvider>
+      </body>
     </html>
   );
 }

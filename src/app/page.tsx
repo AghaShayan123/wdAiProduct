@@ -15,7 +15,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className='bg-[#F7F7F7] h-full w-full overflow-hidden flex justify-center items-center flex-col'>
+    <div className='bg-[#F7F7F7] h-full min-h-[100vh] w-full overflow-hidden flex justify-center items-center flex-col'>
       <Nav activeIndex={activeIndex} />
       {activeIndex === 0 && <Skills setActiveIndex={setActiveIndex} />}
       {activeIndex === 1 && <JobExperiences setActiveIndex={setActiveIndex} />}

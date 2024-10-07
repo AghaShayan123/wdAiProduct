@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from './Button';
 import JobExperiences from '@/components/Experience';
+import { FormContext } from '@/app/context/formContext';
 
 interface SkillsProps {
     setActiveIndex: (index: number) => void;
@@ -17,15 +18,28 @@ const validationSchema = yup.object({
 const Skills: React.FC<SkillsProps> = ({ setActiveIndex }) => {
     const [showExperience, setShowExperience] = useState(false);
 
+    // Access the form context
+    const formContext = useContext(FormContext);
+
+    if (!formContext) {
+        throw new Error('FormContext must be used within a FormProvider');
+    }
+
+    const { formData, setFormData } = formContext;
+
     const formik = useFormik({
         initialValues: {
-            fullName: '',
-            jobPosition: '',
-            skills: '',
+            fullName: formData.fullName || '',
+            jobPosition: formData.jobPosition || '',
+            skills: formData.skills || '',
+            experiences: formData.experiences || [],
+            projects: formData.projects || [],
+
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log('Form Values:', values);
+            setFormData(values); // Save the form data to the context
             setActiveIndex(1);
             setShowExperience(true);
         },
